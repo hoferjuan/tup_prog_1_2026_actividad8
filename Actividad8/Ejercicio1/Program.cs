@@ -19,6 +19,7 @@ namespace Ejercicio1
             do
             {
                 
+
                 Console.WriteLine("(--) Seleccionar opción (--)");
                 Console.WriteLine("(-1-) Ingresar Número");
                 Console.WriteLine("(-2-) Mostrar Acumulados");
@@ -48,9 +49,17 @@ namespace Ejercicio1
                 break;
 
                 case 4: 
-                        prom = acum / cont;
-                        Console.WriteLine($"El promedio es {prom}");
-                break;
+                        if (cont > 0)
+                        {
+                            prom = ((double)acum / cont);
+                            Console.WriteLine($"El promedio es {prom}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se ingresó ningun valor");
+                        }
+
+                            break;
 
                 default: Console.WriteLine("Opción Invalida");
                 break;
