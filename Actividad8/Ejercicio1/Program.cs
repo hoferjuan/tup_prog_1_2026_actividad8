@@ -8,17 +8,17 @@ namespace Ejercicio1
 {
     internal class Program
     {
-        
+
         static void Main(string[] args)
         {
             int num, cont = 0;
             int opcion;
             double acum = 0;
             double prom;
-            
+
             do
             {
-                
+
 
                 Console.WriteLine("(--) Seleccionar opción (--)");
                 Console.WriteLine("(-1-) Ingresar Número");
@@ -31,24 +31,24 @@ namespace Ejercicio1
                 Console.Clear();
 
                 switch (opcion)
-                { 
-                
-                case 1:
-                    Console.WriteLine("Ingrese número deseado");
-                    num = Convert.ToInt32(Console.ReadLine());
-                    cont++;
-                    acum += num;
-                break;
+                {
 
-                case 2: 
+                    case 1:
+                        Console.WriteLine("Ingrese número deseado");
+                        num = Convert.ToInt32(Console.ReadLine());
+                        cont++;
+                        acum += num;
+                        break;
+
+                    case 2:
                         Console.WriteLine($"El total acumulado es {acum}");
-                break;
+                        break;
 
-                case 3: 
+                    case 3:
                         Console.WriteLine($"La cantidad de números ingresados es {cont}");
-                break;
+                        break;
 
-                case 4: 
+                    case 4:
                         if (cont > 0)
                         {
                             prom = ((double)acum / cont);
@@ -59,13 +59,17 @@ namespace Ejercicio1
                             Console.WriteLine("No se ingresó ningun valor");
                         }
 
-                            break;
+                        break;
+                    case 5:
+                        Console.WriteLine("Saliendo del programa...");
+                        break;
 
-                default: Console.WriteLine("Opción Invalida");
-                break;
+                    default:
+                        Console.WriteLine("Opción Invalida");
+                        break;
 
                 }
-                
+
 
             } while (opcion != 5);
         }

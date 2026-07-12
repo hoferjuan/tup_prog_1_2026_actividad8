@@ -8,99 +8,108 @@ namespace Ejercicio2
 {
     internal class Program
     {
-        static int acumulado = 0, cantidad = 0, opcion;
-        static int MostrarMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("(1)- Ingresar Número");
-            Console.WriteLine("(2)- Mostrar Acumulación");
-            Console.WriteLine("(3)- Cantidad de Números acumulados");
-            Console.WriteLine("(4)- Ver Promedio");
-            Console.WriteLine("(5)- Salir");
-            
-            opcion=Convert.ToInt32(Console.ReadLine());
-            
-            return opcion;
-        }
+        static int Acumulado = 0;
+        static int Cantidad = 0;
 
-        #region Registro de Número y calculos
-        static void RegistrarNumero(int numero)
+        public static void RegistrarNumero(int numero)
         {
-            cantidad++;
-            acumulado += numero;
+            Acumulado += numero;
+            Cantidad++;
         }
-        static double ObtenerAcumulado()
+        public static int ObtenerAcumulado()
         {
-            return (double)acumulado;
+            return Acumulado;
         }
-        static double CalcularPromedio()
+        public static double CalcularPromedio()
         {
-            if (cantidad > 0)
+            if (Cantidad > 0)
             {
-                double promedio = (double)acumulado / cantidad;
-                return promedio;
+                double prom = ((double)Acumulado / Cantidad);
+
+                return prom;
             }
             else
-            { return 0; }
-           
+            {
+                return 0;
+            }
         }
-        #endregion
+        public static int MostrarPantallaMenu()
+        {
+            int opcion;
 
-        //Mostrar en Pantalla
+            Console.WriteLine($"");
+            Console.WriteLine($"-- Menú --");
 
-        static int MostrarPantallaSolicitarNumero()
-        {
-            Console.Clear();
-            Console.WriteLine("Ingrese el valor deseado");
-            int valor = Convert.ToInt32(Console.ReadLine());
-            return valor;
-            
+            Console.WriteLine($"1 - Ingresar Número");
+            Console.WriteLine($"2 - Mostrar Acumulados");
+            Console.WriteLine($"3 - Mostrar Cantidad Ingresados");
+            Console.WriteLine($"4 - Mostrar Promedio");
+            Console.WriteLine($"5 - Salir");
+
+            opcion = Convert.ToInt32(Console.ReadLine());
+
+            return opcion;
         }
-        static void MostrarAcumulado()
+        public static void MostrarPantallaSolicitarNumero()
         {
-            Console.Clear();
-            Console.WriteLine($"El valor acumulado es {acumulado}");
+            Console.WriteLine($"-- Ingrese su número --");
+            RegistrarNumero(Convert.ToInt32(Console.ReadLine()));
         }
-        static void MostrarCantidad()
+        public static void MostrarPantallaAcumulado()
         {
-            
-            Console.WriteLine($"La cantidad de números ingresados es {cantidad}.");
+            Console.WriteLine($"-- Acumulado --");
+            Console.WriteLine($"{ObtenerAcumulado()}");
         }
-        static void MostrarPromedio()
+        public static void MostrarPantallaCantidadIngresados()
         {
-            if (cantidad > 0)
-                Console.WriteLine($"El promedio es {CalcularPromedio()}");
-            else
-                Console.WriteLine("No hay números ingresados todavía");
+            Console.WriteLine($"-- Cantidad Ingresados --");
+            Console.WriteLine($"{Cantidad}");
+        }
+        public static void MostrarPantallaPromedio()
+        {
+            Console.WriteLine($"-- Promedio --");
+            Console.WriteLine($"{CalcularPromedio()}");
+
         }
         static void Main(string[] args)
         {
+            int opcion;
+
             do
             {
-                
-                opcion= MostrarMenu();
+                opcion = MostrarPantallaMenu();
 
                 switch (opcion)
                 {
-                    case 1: int numero = MostrarPantallaSolicitarNumero();
-                        RegistrarNumero(numero);
-                        Console.ReadKey();
+                    case 1:
+                        Console.Clear();
+                        MostrarPantallaSolicitarNumero();
                         break;
-                    case 2: MostrarAcumulado();
-                        Console.ReadKey();
-                    break;
-                    case 3: MostrarCantidad();
-                        Console.ReadKey();
+
+                    case 2:
+                        Console.Clear();
+                        MostrarPantallaAcumulado();
                         break;
-                    case 4: MostrarPromedio();
-                        Console.ReadKey();
+
+                    case 3:
+                        Console.Clear();
+                        MostrarPantallaCantidadIngresados();
                         break;
-                    default: Console.WriteLine("La Opción Ingresada es invalida");
-                        Console.ReadKey();
+
+                    case 4:
+                        Console.Clear();
+                        MostrarPantallaPromedio();
+                        break;
+                    case 5:
+                        Console.WriteLine("Saliendo del programa...");
+                        break;
+
+                    default:
+                        Console.WriteLine($"Opcion no valida");
                         break;
                 }
-
-            } while (opcion != 5);
+            }
+            while (opcion != 5);
         }
     }
 }
